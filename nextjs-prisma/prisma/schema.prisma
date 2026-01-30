@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  u_id        Int    @id @default(autoincrement())
+  email       String @unique
+  name        String
+  password    String
+  role        String @default("STUDENT")
+  status      String @default("ACTIVE")
+  access_time Int    @default(0)
+
+  student_courses student_course[]
+}
+
+model Course {
+  c_id          Int    @id @default(autoincrement())
+  c_name        String @unique
+  c_description String
+  c_duration    Int
+  c_price       Float
+  c_category    String
+  c_status      String @default("AVAILABLE")
+
+  student_courses student_course[]
+  course_subjects course_subject[]
+}
+
+model Subject {
+  s_id       Int    @id @default(autoincrement())
+  s_name     String
+  s_duration Int
+  s_status   String @default("AVAILABLE")
+
+  course_subjects course_subject[]
+}
+
+model student_course {
+  sc_id           Int      @id @default(autoincrement())
+  u_id            Int
+  c_id            Int
+  enrollment_date DateTime @default(now())
+  status          String   @default("PENDING")
+  grade_image     String
+
+  user   User   @relation(fields: [u_id], references: [u_id])
+  course Course @relation(fields: [c_id], references: [c_id])
+
+  @@unique([u_id, c_id])
+}
+
+model course_subject {
+  cs_id Int @id @default(autoincrement())
+  c_id  Int
+  s_id  Int
+
+  course  Course  @relation(fields: [c_id], references: [c_id])
+  subject Subject @relation(fields: [s_id], references: [s_id])
+
+  @@unique([c_id, s_id])
+}
+
+model CompanyEvent {
+  ce_id       Int      @id @default(autoincrement())
+  event_name  String
+  event_date  DateTime
+  description String?
+  type        String   @default("COMPANY") // COMPANY, OBSERVANCE
+  created_at  DateTime @default(now())
+
+  @@index([event_date])
+}
