@@ -82,3 +82,18 @@ model CompanyEvent {
 
   @@index([event_date])
 }
+
+model TodoItem {
+  todo_id     Int       @id @default(autoincrement())
+  u_id        Int
+  title       String
+  description String?
+  due_date    DateTime?
+  priority    String    @default("MEDIUM") // LOW, MEDIUM, HIGH
+  status      String    @default("PENDING") // PENDING, IN_PROGRESS, COMPLETED
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+
+  @@index([u_id, status])
+  @@index([due_date])
+}

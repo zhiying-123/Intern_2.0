@@ -104,7 +104,7 @@ export default function StocksUI({ stocks }: { stocks: Stock[] }) {
                 </div>
 
                 {/* Filters Bar */}
-                <div className="mb-6 bg-white/80 backdrop-blur-sm border border-amber-200/60 rounded-2xl shadow-lg p-6">
+                <div className="mb-6 bg-white border border-amber-200 rounded-2xl shadow-lg p-6">
                     <div className="flex flex-wrap gap-4 items-end">
                         {/* Search Box */}
                         <div className="flex-1 min-w-75">
@@ -116,7 +116,7 @@ export default function StocksUI({ stocks }: { stocks: Stock[] }) {
                                 placeholder="Search by symbol or company name..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full px-4 py-3 rounded-lg border border-amber-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all bg-white/60"
+                                className="w-full px-4 py-3 rounded-lg border border-amber-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all bg-white"
                             />
                         </div>
 
@@ -125,7 +125,7 @@ export default function StocksUI({ stocks }: { stocks: Stock[] }) {
                             <label className="text-sm font-semibold text-gray-700 mb-2 block">
                                 📈 Stocks
                             </label>
-                            <div className="px-4 py-3 bg-amber-50/60 border border-amber-200/40 rounded-lg text-sm text-gray-700 font-medium">
+                            <div className="px-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-gray-700 font-medium">
                                 <span className="text-amber-700 font-bold">{sortedStocks.length}</span>
                                 {' '} stocks
                             </div>
@@ -135,15 +135,15 @@ export default function StocksUI({ stocks }: { stocks: Stock[] }) {
 
                 {/* Stocks Table */}
                 {sortedStocks.length === 0 ? (
-                    <div className="bg-white/80 backdrop-blur-sm border border-amber-200/60 rounded-2xl shadow-lg p-12 text-center">
+                    <div className="bg-white border border-amber-200 rounded-2xl shadow-lg p-12 text-center">
                         <div className="text-6xl mb-4">📭</div>
                         <h3 className="text-xl font-bold text-gray-800 mb-2">No Stocks Found</h3>
                         <p className="text-gray-600">Try adjusting your search terms</p>
                     </div>
                 ) : (
-                    <div className="bg-white/80 backdrop-blur-sm border border-amber-200/60 rounded-2xl shadow-lg overflow-hidden">
+                    <div className="bg-white border border-amber-200 rounded-2xl shadow-lg overflow-hidden">
                         {/* Table Header */}
-                        <div className="bg-linear-to-r from-amber-50 to-yellow-50 border-b border-amber-200/60 px-6 py-4">
+                        <div className="bg-linear-to-r from-amber-50 to-yellow-50 border-b border-amber-200 px-6 py-4">
                             <div className="grid grid-cols-12 gap-4 font-semibold text-sm text-gray-700">
                                 <div className="col-span-3 cursor-pointer hover:text-amber-700 transition-colors"
                                     onClick={() => toggleSort('symbol')}>
@@ -168,7 +168,7 @@ export default function StocksUI({ stocks }: { stocks: Stock[] }) {
                         </div>
 
                         {/* Table Body */}
-                        <div className="divide-y divide-amber-200/40">
+                        <div className="divide-y divide-amber-200">
                             {sortedStocks.map((stock) => {
                                 const quote = stock.quote;
                                 const profile = stock.profile;
@@ -178,7 +178,7 @@ export default function StocksUI({ stocks }: { stocks: Stock[] }) {
 
                                 return (
                                     <div key={stock.symbol}
-                                        className="px-6 py-4 hover:bg-amber-50/30 transition-colors">
+                                        className="px-6 py-4 hover:bg-amber-50 transition-colors">
                                         <div className="grid grid-cols-12 gap-4 items-center">
                                             {/* Symbol & Name */}
                                             <div className="col-span-3">

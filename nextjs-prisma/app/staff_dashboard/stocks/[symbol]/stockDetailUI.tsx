@@ -215,44 +215,44 @@ export default function StockDetailUI({
     ];
 
     return (
-        <div className="min-h-screen bg-amber-50/30 py-6 px-4">
+        <div className="min-h-screen py-8 px-4">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="mb-6">
+                <div className="mb-8">
                     <Link href="/staff_dashboard/stocks">
-                        <button className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-amber-700 rounded-lg transition-all">
+                        <button className="flex items-center gap-2 px-5 py-2.5 text-sm text-amber-800 bg-white hover:bg-amber-50 rounded-xl transition-all border border-amber-100 font-medium">
                             <span>←</span>
                             <span>Back to Market</span>
                         </button>
                     </Link>
                 </div>
 
-                {/* Stock Info Header */}
-                <div className="mb-6">
-                    <div className="flex items-center justify-between">
+                {/* Stock Info Header - Card */}
+                <div className="p-8 mb-8">
+                    <div className="flex items-center justify-between flex-wrap gap-6">
                         <div className="flex items-center gap-6">
-                            <div className="w-16 h-16 bg-gray-200 rounded-2xl flex items-center justify-center text-gray-600 font-bold text-xl">
+                            <div className="w-20 h-20 bg-linear-to-br from-amber-100 to-orange-100 text-amber-700 border border-amber-200 rounded-2xl flex items-center justify-center font-bold text-2xl">
                                 {symbol.slice(0, 2)}
                             </div>
                             <div>
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-3 mb-2">
                                     <h1 className="text-4xl font-bold text-gray-900">{symbol}</h1>
                                     {profile?.exchange && (
-                                        <span className="px-3 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">
+                                        <span className="px-3 py-1.5 bg-white border border-gray-300 text-gray-700 text-xs font-semibold rounded-full">
                                             {profile.exchange}
                                         </span>
                                     )}
                                 </div>
                                 {profile?.name && (
-                                    <p className="text-gray-600 text-lg mt-1">{profile.name}</p>
+                                    <p className="text-gray-600 text-lg">{profile.name}</p>
                                 )}
                             </div>
                         </div>
                         <div className="text-right">
-                            <div className="text-5xl font-bold text-gray-900 mb-2">
+                            <div className="text-5xl font-bold text-gray-900 mb-3">
                                 ${quote.c.toFixed(2)}
                             </div>
-                            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl ${isPositive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'} font-semibold text-lg`}>
+                            <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl ${isPositive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'} font-semibold text-lg shadow-sm`}>
                                 <span>{isPositive ? '▲' : '▼'}</span>
                                 <span>${Math.abs(quote.d).toFixed(2)}</span>
                                 <span>({quote.dp >= 0 ? '+' : ''}{quote.dp.toFixed(2)}%)</span>
@@ -261,27 +261,27 @@ export default function StockDetailUI({
                     </div>
 
                     {/* Quick Stats */}
-                    <div className="grid grid-cols-5 gap-4 mt-6">
-                        <div className="text-center">
-                            <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Open</p>
-                            <p className="text-gray-800 font-semibold text-lg">${quote.o.toFixed(2)}</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 mt-8 pt-8 border-t border-amber-100">
+                        <div className="text-center bg-white rounded-xl py-4 px-3 border border-gray-200">
+                            <p className="text-gray-600 text-xs uppercase tracking-wider mb-2 font-medium">Open</p>
+                            <p className="text-gray-900 font-bold text-xl">${quote.o.toFixed(2)}</p>
                         </div>
-                        <div className="text-center">
-                            <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">High</p>
-                            <p className="text-green-600 font-semibold text-lg">${quote.h.toFixed(2)}</p>
+                        <div className="text-center bg-white rounded-xl py-4 px-3 border border-gray-200">
+                            <p className="text-green-600 text-xs uppercase tracking-wider mb-2 font-medium">High</p>
+                            <p className="text-green-700 font-bold text-xl">${quote.h.toFixed(2)}</p>
                         </div>
-                        <div className="text-center">
-                            <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Low</p>
-                            <p className="text-red-600 font-semibold text-lg">${quote.l.toFixed(2)}</p>
+                        <div className="text-center bg-white rounded-xl py-4 px-3 border border-gray-200">
+                            <p className="text-orange-600 text-xs uppercase tracking-wider mb-2 font-medium">Low</p>
+                            <p className="text-orange-700 font-bold text-xl">${quote.l.toFixed(2)}</p>
                         </div>
-                        <div className="text-center">
-                            <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Prev Close</p>
-                            <p className="text-gray-800 font-semibold text-lg">${quote.pc.toFixed(2)}</p>
+                        <div className="text-center bg-white rounded-xl py-4 px-3 border border-gray-200">
+                            <p className="text-gray-600 text-xs uppercase tracking-wider mb-2 font-medium">Prev Close</p>
+                            <p className="text-gray-900 font-bold text-xl">${quote.pc.toFixed(2)}</p>
                         </div>
                         {profile?.marketCapitalization && (
-                            <div className="text-center">
-                                <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Market Cap</p>
-                                <p className="text-gray-800 font-semibold text-lg">
+                            <div className="text-center bg-white rounded-xl py-4 px-3 border border-gray-200">
+                                <p className="text-gray-600 text-xs uppercase tracking-wider mb-2 font-medium">Market Cap</p>
+                                <p className="text-gray-900 font-bold text-xl">
                                     ${(profile.marketCapitalization / 1000).toFixed(1)}B
                                 </p>
                             </div>
@@ -289,37 +289,37 @@ export default function StockDetailUI({
                     </div>
                 </div>
 
-                {/* Chart Section */}
-                <div className="mb-6">
+                {/* Chart Section - Card */}
+                <div className="p-8 mb-8">
                     {/* Chart Header */}
-                    <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
                         <div className="flex items-center gap-4">
-                            <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                                <span>{viewMode === 'chart' ? '📈' : '📝'}</span>
+                            <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+                                <span className="text-3xl">{viewMode === 'chart' ? '📈' : '📝'}</span>
                                 {viewMode === 'chart' ? 'Price Chart' : 'Price History'}
                             </h2>
                             {/* View Mode Toggle */}
-                            <div className="flex bg-amber-100 rounded-lg p-1">
+                            <div className="flex bg-amber-100 rounded-xl p-1.5">
                                 <button
                                     onClick={() => setViewMode('chart')}
-                                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${viewMode === 'chart'
-                                        ? 'bg-amber-400 text-white'
-                                        : 'text-gray-600 hover:text-gray-800'}`}
+                                    className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${viewMode === 'chart'
+                                        ? 'bg-white text-amber-900'
+                                        : 'text-amber-700 hover:text-amber-900'}`}
                                 >
                                     Chart
                                 </button>
                                 <button
                                     onClick={() => setViewMode('table')}
-                                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${viewMode === 'table'
-                                        ? 'bg-amber-400 text-white'
-                                        : 'text-gray-600 hover:text-gray-800'}`}
+                                    className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${viewMode === 'table'
+                                        ? 'bg-white text-amber-900'
+                                        : 'text-amber-700 hover:text-amber-900'}`}
                                 >
                                     Table
                                 </button>
                             </div>
                         </div>
                         {stats && (
-                            <div className={`px-4 py-2 rounded-lg ${stats.periodChangePositive ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'} font-semibold`}>
+                            <div className={`px-5 py-2.5 rounded-xl ${stats.periodChangePositive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'} font-bold text-lg shadow-sm`}>
                                 {stats.periodChangePositive ? '↑' : '↓'} {stats.periodChangePositive ? '+' : ''}{stats.periodChange.toFixed(2)}% ({timeRange})
                             </div>
                         )}
@@ -414,59 +414,60 @@ export default function StockDetailUI({
                             <div className="overflow-x-auto">
                                 <table className="w-full text-sm">
                                     <thead>
-                                        <tr className="border-b border-gray-200">
-                                            <th className="text-left py-3 px-4 text-gray-500 font-medium">Date</th>
-                                            <th className="text-right py-3 px-4 text-gray-500 font-medium">Open</th>
-                                            <th className="text-right py-3 px-4 text-gray-500 font-medium">High</th>
-                                            <th className="text-right py-3 px-4 text-gray-500 font-medium">Low</th>
-                                            <th className="text-right py-3 px-4 text-gray-500 font-medium">Close</th>
-                                            <th className="text-right py-3 px-4 text-gray-500 font-medium">Change</th>
-                                            <th className="text-right py-3 px-4 text-gray-500 font-medium">Volume</th>
+                                        <tr className="border-b border-amber-100">
+                                            <th className="text-left py-3 px-4 text-amber-700 font-medium">Date</th>
+                                            <th className="text-right py-3 px-4 text-amber-700 font-medium">Open</th>
+                                            <th className="text-right py-3 px-4 text-amber-700 font-medium">High</th>
+                                            <th className="text-right py-3 px-4 text-amber-700 font-medium">Low</th>
+                                            <th className="text-right py-3 px-4 text-amber-700 font-medium">Close</th>
+                                            <th className="text-right py-3 px-4 text-amber-700 font-medium">Change</th>
+                                            <th className="text-right py-3 px-4 text-amber-700 font-medium">Volume</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {[...getFilteredData].reverse().map((row, index) => (
-                                            <tr key={index} className="border-b border-gray-100 hover:bg-amber-50/30 transition-colors">
-                                                <td className="py-3 px-4 text-gray-800 font-medium">{row.fullDate}</td>
-                                                <td className="text-right py-3 px-4 text-gray-600">${row.open.toFixed(2)}</td>
+                                            <tr key={index} className="border-b border-amber-50 hover:bg-amber-50 transition-colors">
+                                                <td className="py-3 px-4 text-amber-900 font-medium">{row.fullDate}</td>
+                                                <td className="text-right py-3 px-4 text-amber-700">${row.open.toFixed(2)}</td>
                                                 <td className="text-right py-3 px-4 text-green-600">${row.high.toFixed(2)}</td>
-                                                <td className="text-right py-3 px-4 text-red-600">${row.low.toFixed(2)}</td>
-                                                <td className="text-right py-3 px-4 text-gray-800 font-semibold">${row.close.toFixed(2)}</td>
-                                                <td className={`text-right py-3 px-4 font-medium ${row.change >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                                <td className="text-right py-3 px-4 text-orange-600">${row.low.toFixed(2)}</td>
+                                                <td className="text-right py-3 px-4 text-amber-900 font-semibold">${row.close.toFixed(2)}</td>
+                                                <td className={`text-right py-3 px-4 font-medium ${row.change >= 0 ? 'text-green-600' : 'text-orange-600'}`}>
                                                     {row.change >= 0 ? '+' : ''}{row.change.toFixed(2)}%
                                                 </td>
-                                                <td className="text-right py-3 px-4 text-gray-500">
+                                                <td className="text-right py-3 px-4 text-amber-600">
                                                     {row.volume > 0 ? `${(row.volume / 1000000).toFixed(2)}M` : '-'}
                                                 </td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
-                                <p className="text-center text-gray-400 text-xs mt-4">
+                                <p className="text-center text-amber-500 text-xs mt-4">
                                     Showing {getFilteredData.length} records (newest first)
                                 </p>
                             </div>
                         )
                     ) : (
-                        <div className="h-112 flex items-center justify-center bg-amber-50/30 rounded-xl">
+                        <div className="h-112 flex items-center justify-center bg-amber-50 rounded-2xl border border-dashed border-amber-200">
                             <div className="text-center">
-                                <div className="text-6xl mb-4">📊</div>
-                                <h3 className="text-xl font-bold text-gray-800 mb-2">No Data Available</h3>
-                                <p className="text-gray-600">Historical data is not available for this period</p>
+                                <div className="text-7xl mb-4">📊</div>
+                                <h3 className="text-2xl font-bold text-amber-900 mb-3">No Data Available</h3>
+                                <p className="text-amber-700 text-lg">Historical data is not available for this period</p>
                             </div>
                         </div>
                     )}
 
                     {/* Time Range Selector - BOTTOM */}
-                    <div className="mt-6">
-                        <div className="flex flex-wrap gap-2 justify-center">
+                    <div className="mt-8 pt-8 border-t border-amber-100">
+                        <p className="text-sm font-medium text-amber-700 mb-4 text-center">Select Time Range</p>
+                        <div className="flex flex-wrap gap-3 justify-center">
                             {timeRanges.map(({ key, label }) => (
                                 <button
                                     key={key}
                                     onClick={() => setTimeRange(key)}
-                                    className={`px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 ${timeRange === key
-                                        ? 'bg-amber-400 text-white'
-                                        : 'bg-amber-100 text-gray-700 hover:bg-amber-200'
+                                    className={`px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200 ${timeRange === key
+                                        ? 'bg-amber-100 text-amber-900 ring-1 ring-amber-200'
+                                        : 'bg-amber-50 text-amber-700 hover:bg-amber-100'
                                         }`}
                                 >
                                     {label}
@@ -476,79 +477,87 @@ export default function StockDetailUI({
                     </div>
                 </div>
 
-                {/* Statistics Panel */}
+                {/* Statistics Panel - Card */}
                 {stats && (
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-                        <div className="text-center py-4">
-                            <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">Period High</p>
-                            <p className="text-2xl font-bold text-green-600">${stats.high.toFixed(2)}</p>
-                        </div>
+                    <div className="p-8 mb-8">
+                        <h3 className="text-2xl font-bold text-amber-900 mb-6 flex items-center gap-3">
+                            <span className="text-3xl">📊</span>
+                            Period Statistics
+                        </h3>
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="text-center bg-white border border-gray-200 rounded-xl py-6 px-4">
+                                <p className="text-green-600 text-xs uppercase tracking-wider mb-3 font-medium">Period High</p>
+                                <p className="text-3xl font-bold text-green-700">${stats.high.toFixed(2)}</p>
+                            </div>
 
-                        <div className="text-center py-4">
-                            <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">Period Low</p>
-                            <p className="text-2xl font-bold text-red-600">${stats.low.toFixed(2)}</p>
-                        </div>
+                            <div className="text-center bg-white border border-gray-200 rounded-xl py-6 px-4">
+                                <p className="text-orange-600 text-xs uppercase tracking-wider mb-3 font-medium">Period Low</p>
+                                <p className="text-3xl font-bold text-orange-700">${stats.low.toFixed(2)}</p>
+                            </div>
 
-                        <div className="text-center py-4">
-                            <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">Period Change</p>
-                            <p className={`text-2xl font-bold ${stats.periodChangePositive ? 'text-green-600' : 'text-red-600'}`}>
-                                {stats.periodChangePositive ? '+' : ''}{stats.periodChange.toFixed(2)}%
-                            </p>
-                        </div>
+                            <div className="text-center bg-white border border-gray-200 rounded-xl py-6 px-4">
+                                <p className="text-gray-600 text-xs uppercase tracking-wider mb-3 font-medium">Period Change</p>
+                                <p className={`text-3xl font-bold ${stats.periodChangePositive ? 'text-green-700' : 'text-orange-700'}`}>
+                                    {stats.periodChangePositive ? '+' : ''}{stats.periodChange.toFixed(2)}%
+                                </p>
+                            </div>
 
-                        <div className="text-center py-4">
-                            <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">Volatility</p>
-                            <p className="text-2xl font-bold text-gray-800">{stats.volatility.toFixed(2)}%</p>
+                            <div className="text-center bg-white border border-gray-200 rounded-xl py-6 px-4">
+                                <p className="text-gray-600 text-xs uppercase tracking-wider mb-3 font-medium">Volatility</p>
+                                <p className="text-3xl font-bold text-gray-900">{stats.volatility.toFixed(2)}%</p>
+                            </div>
                         </div>
                     </div>
                 )}
 
-                {/* Technical Indicators */}
+                {/* Technical Indicators - Card */}
                 {stats && (
-                    <div className="mb-8 pt-8 border-t border-amber-200/50">
-                        <h3 className="text-lg font-bold text-gray-900 mb-6">
-                            🔍 Technical Analysis
+                    <div className="p-8 mb-8">
+                        <h3 className="text-2xl font-bold text-amber-900 mb-6 flex items-center gap-3">
+                            <span className="text-3xl">🔍</span>
+                            Technical Analysis
                         </h3>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div className="text-center py-4">
-                                <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">7-Day MA</p>
-                                <p className="text-gray-800 font-semibold text-xl">${stats.ma7.toFixed(2)}</p>
-                                <p className={`text-xs mt-1 ${quote.c > stats.ma7 ? 'text-green-600' : 'text-red-600'}`}>
+                            <div className="text-center bg-white border border-gray-200 rounded-xl py-6 px-4">
+                                <p className="text-gray-600 text-xs uppercase tracking-wider mb-3 font-medium">7-Day MA</p>
+                                <p className="text-gray-900 font-bold text-2xl">${stats.ma7.toFixed(2)}</p>
+                                <p className={`text-sm mt-2 font-semibold ${quote.c > stats.ma7 ? 'text-green-600' : 'text-orange-600'}`}>
                                     {quote.c > stats.ma7 ? '↑ Above' : '↓ Below'} average
                                 </p>
                             </div>
-                            <div className="text-center py-4">
-                                <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">20-Day MA</p>
-                                <p className="text-gray-800 font-semibold text-xl">${stats.ma20.toFixed(2)}</p>
-                                <p className={`text-xs mt-1 ${quote.c > stats.ma20 ? 'text-green-600' : 'text-red-600'}`}>
+                            <div className="text-center bg-white border border-gray-200 rounded-xl py-6 px-4">
+                                <p className="text-gray-600 text-xs uppercase tracking-wider mb-3 font-medium">20-Day MA</p>
+                                <p className="text-gray-900 font-bold text-2xl">${stats.ma20.toFixed(2)}</p>
+                                <p className={`text-sm mt-2 font-semibold ${quote.c > stats.ma20 ? 'text-green-600' : 'text-orange-600'}`}>
                                     {quote.c > stats.ma20 ? '↑ Above' : '↓ Below'} average
                                 </p>
                             </div>
-                            <div className="text-center py-4">
-                                <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">Avg Volume</p>
-                                <p className="text-gray-800 font-semibold text-xl">
+                            <div className="text-center bg-white border border-gray-200 rounded-xl py-6 px-4">
+                                <p className="text-gray-600 text-xs uppercase tracking-wider mb-3 font-medium">Avg Volume</p>
+                                <p className="text-gray-900 font-bold text-2xl">
                                     {stats.avgVolume > 0 ? `${(stats.avgVolume / 1000000).toFixed(2)}M` : 'N/A'}
                                 </p>
                             </div>
-                            <div className="text-center py-4">
-                                <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">Data Points</p>
-                                <p className="text-gray-800 font-semibold text-xl">{stats.dataPoints} days</p>
+                            <div className="text-center bg-white border border-gray-200 rounded-xl py-6 px-4">
+                                <p className="text-gray-600 text-xs uppercase tracking-wider mb-3 font-medium">Data Points</p>
+                                <p className="text-gray-900 font-bold text-2xl">{stats.dataPoints}</p>
+                                <p className="text-sm mt-2 text-gray-600 font-medium">days tracked</p>
                             </div>
                         </div>
 
                         {/* Signal Summary */}
-                        <div className="mt-6 text-center">
-                            <span className="text-sm font-medium text-gray-700 mr-3">Signal:</span>
+                        <div className="mt-8 pt-8 border-t border-amber-100 text-center">
+                            <span className="text-sm font-semibold text-amber-800 mr-4">Trading Signal:</span>
                             {quote.c > stats.ma7 && quote.c > stats.ma20 ? (
-                                <span className="px-4 py-2 bg-green-100 text-green-700 rounded-lg font-semibold text-sm">
+                                <span className="px-6 py-3 bg-green-50 text-green-700 border border-green-200 rounded-xl font-bold text-base">
                                     🟢 Strong Buy
                                 </span>
                             ) : quote.c < stats.ma7 && quote.c < stats.ma20 ? (
-                                <span className="px-4 py-2 bg-red-100 text-red-700 rounded-lg font-semibold text-sm">
+                                <span className="px-6 py-3 bg-orange-50 text-orange-700 border border-orange-200 rounded-xl font-bold text-base">
                                     🔴 Strong Sell
                                 </span>
                             ) : (
-                                <span className="px-4 py-2 bg-amber-100 text-amber-700 rounded-lg font-semibold text-sm">
+                                <span className="px-6 py-3 bg-yellow-50 text-yellow-700 border border-yellow-200 rounded-xl font-bold text-base">
                                     🟡 Hold
                                 </span>
                             )}
@@ -557,8 +566,11 @@ export default function StockDetailUI({
                 )}
 
                 {/* Footer Notice */}
-                <div className="mt-6 text-center text-sm text-gray-500">
-                    <p>⏰ Data updates every 5 minutes • For informational purposes only</p>
+                <div className="p-6 text-center">
+                    <div className="flex items-center justify-center gap-3 text-amber-700">
+                        <span className="text-2xl">⏰</span>
+                        <p className="text-sm font-medium">Data updates every 5 minutes • For informational purposes only</p>
+                    </div>
                 </div>
             </div>
         </div>

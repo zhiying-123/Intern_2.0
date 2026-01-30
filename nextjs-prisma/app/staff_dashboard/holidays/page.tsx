@@ -1,9 +1,18 @@
-import HolidaysUI from "./holidaysUI";
+import CalendarUI from "./calendarUI";
 import { fetchMalaysiaHolidays } from "./holidays";
 import prisma from "@/lib/prisma";
+import { cookies } from "next/headers";
 
 interface PageProps {
     searchParams: Promise<{ year?: string }>;
+}
+
+async function getCurrentUserId(): Promise<number | null> {
+    const cookieStore = await cookies();
+    const userCookie = cookieStore.get("user")?.value;
+    if (!userCookie) return null;
+    const user = JSON.parse(userCookie);
+    return user.id;
 }
 
 export default async function HolidaysPage({ searchParams }: PageProps) {
@@ -12,6 +21,7 @@ export default async function HolidaysPage({ searchParams }: PageProps) {
 
     let publicHolidays = [] as any[];
     let companyEvents = [] as any[];
+    let userTodos = [] as any[];
 
     try {
         // Fetch public holidays from API
@@ -37,17 +47,35 @@ export default async function HolidaysPage({ searchParams }: PageProps) {
             localName: e.description || e.event_name,
             type: e.type.toLowerCase() as 'company' | 'observance'
         }));
+
+        // Fetch user's personal todos
+        const userId = await getCurrentUserId();
+        if (userId) {
+            const todos = await prisma.todoItem.findMany({
+                where: {
+                    u_id: userId,
+                    due_date: {
+                        not: null
+                    }
+                },
+                orderBy: [
+                    { due_date: 'asc' },
+                ],
+            });
+            userTodos = todos;
+        }
     } catch (e) {
-        console.error("Failed to load holidays:", e);
+        console.error("Failed to load calendar data:", e);
     }
 
     // Combine public holidays and company events
     const allHolidays = [...publicHolidays, ...companyEvents];
 
     return (
-        <HolidaysUI
+        <CalendarUI
             holidays={allHolidays}
             year={year}
+            todos={userTodos}
         />
     );
 }

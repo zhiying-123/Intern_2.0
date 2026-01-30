@@ -61,9 +61,15 @@ export const sidebarRoutes: RouteConfig[] = [
     },
     {
         path: "/staff_dashboard/holidays",
-        label: "Holidays",
+        label: "Calendar",
         icon: "🗓️",
-        description: "View 2026 public holidays and company events"
+        description: "View calendar, holidays, and your personal tasks"
+    },
+    {
+        path: "/staff_dashboard/mytodo",
+        label: "My To-Do List",
+        icon: "✅",
+        description: "Manage your personal tasks and to-dos"
     },
     {
         path: "/staff_dashboard/s_profile",
