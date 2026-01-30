@@ -21,28 +21,28 @@ export default async function StaffDashboardPage() {
                     {mainRoutes.map((route) => {
                         const colorClasses = {
                             blue: {
-                                bg: 'bg-blue-50/80 hover:bg-blue-100/80',
-                                border: 'border-blue-200/60',
+                                bg: 'bg-blue-50 hover:bg-blue-100',
+                                border: 'border-blue-200',
                                 text: 'text-blue-700',
-                                accent: 'bg-blue-500/10'
+                                accent: 'bg-blue-100'
                             },
                             green: {
-                                bg: 'bg-green-50/80 hover:bg-green-100/80',
-                                border: 'border-green-200/60',
+                                bg: 'bg-green-50 hover:bg-green-100',
+                                border: 'border-green-200',
                                 text: 'text-green-700',
-                                accent: 'bg-green-500/10'
+                                accent: 'bg-green-100'
                             },
                             purple: {
-                                bg: 'bg-purple-50/80 hover:bg-purple-100/80',
-                                border: 'border-purple-200/60',
+                                bg: 'bg-purple-50 hover:bg-purple-100',
+                                border: 'border-purple-200',
                                 text: 'text-purple-700',
-                                accent: 'bg-purple-500/10'
+                                accent: 'bg-purple-100'
                             },
                             amber: {
-                                bg: 'bg-amber-50/80 hover:bg-amber-100/80',
-                                border: 'border-amber-200/60',
+                                bg: 'bg-amber-50 hover:bg-amber-100',
+                                border: 'border-amber-200',
                                 text: 'text-amber-700',
-                                accent: 'bg-amber-500/10'
+                                accent: 'bg-amber-100'
                             }
                         };
                         const colors = colorClasses[route.color as keyof typeof colorClasses];
@@ -53,7 +53,7 @@ export default async function StaffDashboardPage() {
                                 href={route.path}
                                 className="group"
                             >
-                                <div className={`${colors.bg} border ${colors.border} rounded-2xl p-8 transition-all duration-300 hover:shadow-md backdrop-blur-sm h-full flex flex-col items-center justify-center text-center gap-4 group-hover:scale-105 transform`}>
+                                <div className={`${colors.bg} border ${colors.border} rounded-2xl p-8 transition-all duration-300 hover:shadow-md h-full flex flex-col items-center justify-center text-center gap-4 group-hover:scale-105 transform`}>
                                     <div className={`${colors.accent} w-32 h-32 rounded-full flex items-center justify-center transition-transform group-hover:scale-110`}>
                                         <span className="text-6xl">{route.icon}</span>
                                     </div>

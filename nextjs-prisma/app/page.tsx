@@ -10,7 +10,7 @@ export default async function Home() {
   return (
     <div className="w-full">
       {/* ================= HERO SECTION ================= */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a]">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a]">
         {/* Animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -27,7 +27,7 @@ export default async function Home() {
         </div>
 
         {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size[50px_50px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:50px_50px]"></div>
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           {/* Badge */}
@@ -38,7 +38,7 @@ export default async function Home() {
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white">
             Shape Your
-            <span className="block bg-linear-to-r from-blue-300 via-indigo-300 to-purple-300 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-300 via-indigo-300 to-purple-300 bg-clip-text text-transparent">
               Future With Us
             </span>
           </h1>
@@ -93,7 +93,7 @@ export default async function Home() {
       </section>
 
       {/* ================= ABOUT SECTION ================= */}
-      <section className="py-24 px-6 bg-linear-to-b from-white to-blue-50">
+      <section className="py-24 px-6 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -140,22 +140,22 @@ export default async function Home() {
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-4 bg-linear-to-r from-blue-500/20 to-indigo-500/20 rounded-3xl blur-2xl"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-3xl blur-2xl"></div>
               <div className="relative bg-white border border-slate-200 rounded-3xl p-8 shadow-xl">
                 <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-linear-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center">
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center">
                     <div className="text-4xl font-bold text-blue-900 mb-2">10+</div>
                     <div className="text-sm text-blue-700/70">Years Experience</div>
                   </div>
-                  <div className="bg-linear-to-br from-indigo-50 to-indigo-100 rounded-2xl p-6 text-center">
+                  <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl p-6 text-center">
                     <div className="text-4xl font-bold text-indigo-900 mb-2">50+</div>
                     <div className="text-sm text-indigo-700/70">Expert Faculty</div>
                   </div>
-                  <div className="bg-linear-to-br from-purple-50 to-purple-100 rounded-2xl p-6 text-center">
+                  <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 text-center">
                     <div className="text-4xl font-bold text-purple-900 mb-2">100%</div>
                     <div className="text-sm text-purple-700/70">Online Access</div>
                   </div>
-                  <div className="bg-linear-to-br from-emerald-50 to-emerald-100 rounded-2xl p-6 text-center">
+                  <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-6 text-center">
                     <div className="text-4xl font-bold text-emerald-900 mb-2">24/7</div>
                     <div className="text-sm text-emerald-700/70">Support</div>
                   </div>
@@ -167,7 +167,7 @@ export default async function Home() {
       </section>
 
       {/* ================= POPULAR COURSES ================= */}
-      <section className="py-24 px-6 bg-linear-to-b from-blue-50 to-white">
+      <section className="py-24 px-6 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="text-sm font-semibold text-blue-600 mb-4 tracking-wider uppercase">Featured</div>
@@ -185,13 +185,13 @@ export default async function Home() {
                   className={`group relative bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:border-blue-200 transition-all duration-300 hover:-translate-y-2 ${idx === 0 ? 'md:-mt-4 md:mb-4 ring-2 ring-blue-500/20 shadow-lg' : 'shadow-md'}`}
                 >
                   {idx === 0 && (
-                    <div className="absolute -top-3 left-6 px-3 py-1 bg-linear-to-r from-amber-500 to-orange-500 rounded-full text-xs font-semibold text-white shadow-lg">
+                    <div className="absolute -top-3 left-6 px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full text-xs font-semibold text-white shadow-lg">
                       Most Popular
                     </div>
                   )}
 
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg shadow-blue-500/30">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg shadow-blue-500/30">
                       {p.course.c_name.split(' ').map(s => s[0]).slice(0, 2).join('').toUpperCase()}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -233,7 +233,7 @@ export default async function Home() {
       </section>
 
       {/* ================= FOUNDERS SECTION ================= */}
-      <section className="py-24 px-6 bg-linear-to-b from-white via-blue-50 to-white">
+      <section className="py-24 px-6 bg-gradient-to-b from-white via-blue-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="text-sm font-semibold text-blue-600 mb-4 tracking-wider uppercase">Leadership</div>
@@ -246,7 +246,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="group relative bg-white border border-slate-200 rounded-2xl p-8 text-center hover:shadow-xl hover:border-amber-200 transition-all duration-300">
               <div className="relative inline-block mb-6">
-                <div className="absolute -inset-3 bg-linear-to-r from-amber-400/40 to-orange-400/40 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute -inset-3 bg-gradient-to-r from-amber-400/40 to-orange-400/40 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <Image
                   src="/H1/staff1.jpeg"
                   alt="Cookies"
@@ -266,7 +266,7 @@ export default async function Home() {
 
             <div className="group relative bg-white border border-slate-200 rounded-2xl p-8 text-center hover:shadow-xl hover:border-emerald-200 transition-all duration-300">
               <div className="relative inline-block mb-6">
-                <div className="absolute -inset-3 bg-linear-to-r from-emerald-400/40 to-teal-400/40 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute -inset-3 bg-gradient-to-r from-emerald-400/40 to-teal-400/40 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <Image
                   src="/H1/staff2.jpeg"
                   alt="Milk"
@@ -288,7 +288,7 @@ export default async function Home() {
       </section>
 
       {/* ================= LOCATION SECTION ================= */}
-      <section className="py-24 px-6 bg-linear-to-b from-white to-blue-50">
+      <section className="py-24 px-6 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="text-sm font-semibold text-blue-600 mb-4 tracking-wider uppercase">Visit Us</div>
@@ -297,7 +297,7 @@ export default async function Home() {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-4 bg-linear-to-r from-blue-500/10 to-indigo-500/10 rounded-3xl blur-2xl"></div>
+            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-3xl blur-2xl"></div>
             <div className="relative bg-white border border-slate-200 rounded-2xl p-3 shadow-xl overflow-hidden">
               <iframe
                 className="w-full h-96 rounded-xl"
@@ -331,7 +331,7 @@ export default async function Home() {
       {/* ================= CTA SECTION ================= */}
       <section className="py-24 px-6 relative overflow-hidden bg-cover bg-center" style={{ backgroundImage: "url(/H1/bg1.jpg)" }}>
         {/* Lighter overlay */}
-        <div className="absolute inset-0 bg-linear-to-br from-[#0f172a]/70 via-[#1e293b]/60 to-[#0f172a]/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a]/70 via-[#1e293b]/60 to-[#0f172a]/70"></div>
 
         <div className="relative max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
