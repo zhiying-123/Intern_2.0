@@ -19,8 +19,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Professional App",
-  description: "A professional deep blue themed Next.js app",
+  title: "Course Founder - ZY University",
+  description: "Course Founder is a comprehensive university course management system for student enrollment, course tracking, and academic records.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 // ==================== Auth State (Server) ====================
