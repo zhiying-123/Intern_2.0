@@ -13,7 +13,7 @@ type Subject = {
 
 export default function MySubjectUI() {
   const searchParams = useSearchParams();
-  const courseId = searchParams.get("courseId");
+  const courseId = searchParams?.get("courseId");
 
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [loading, setLoading] = useState(true);
