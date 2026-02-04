@@ -168,26 +168,26 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
     };
 
     return (
-        <div className="min-h-screen py-8 px-4">
+        <div className="min-h-screen py-8 px-4 bg-linear-to-br from-yellow-50/30 via-amber-50/20 to-white">
             <div className="max-w-7xl mx-auto">
                 {/* Title with Year Selector */}
-                <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-6 mb-6">
+                <div className="p-6 mb-8">
                     <div className="flex items-center justify-between flex-wrap gap-6">
                         <div>
                             <h1 className="text-3xl font-bold text-amber-900 mb-1 flex items-center gap-3">
                                 <span className="text-4xl">🗓️</span>
                                 <span>{year} Calendar</span>
                             </h1>
-                            <p className="text-amber-700">Holidays, events, and your personal tasks</p>
+                            <p className="text-amber-800 font-medium">Holidays, events, and your personal tasks</p>
                         </div>
-                        <div className="flex bg-amber-100/60 rounded-xl p-1">
+                        <div className="flex bg-white/60 rounded-xl p-1">
                             {availableYears.map((y) => (
                                 <Link
                                     key={y}
                                     href={`/staff_dashboard/holidays?year=${y}`}
-                                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${year === y
-                                        ? 'bg-white/90 text-amber-900'
-                                        : 'text-amber-700 hover:text-amber-900'}`}
+                                    className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${year === y
+                                        ? 'bg-white text-amber-900 shadow-sm'
+                                        : 'text-amber-700 hover:text-amber-900 hover:bg-yellow-50'}`}
                                 >
                                     {y}
                                 </Link>
@@ -197,45 +197,45 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
 
                     {/* Stats */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                        <div className="text-center bg-amber-100/40 rounded-lg py-3 px-3">
-                            <p className="text-2xl font-bold text-amber-700">{totalPublicHolidays}</p>
-                            <p className="text-amber-600 text-xs font-medium">Public Holidays</p>
+                        <div className="text-center bg-white/70 rounded-xl py-4 px-3">
+                            <p className="text-3xl font-bold text-green-700">{totalPublicHolidays}</p>
+                            <p className="text-green-600 text-sm font-semibold mt-1">Public Holidays</p>
                         </div>
-                        <div className="text-center bg-orange-100/40 rounded-lg py-3 px-3">
-                            <p className="text-2xl font-bold text-orange-700">{totalCompanyHolidays}</p>
-                            <p className="text-orange-600 text-xs font-medium">Company Events</p>
+                        <div className="text-center bg-white/70 rounded-xl py-4 px-3">
+                            <p className="text-3xl font-bold text-blue-700">{totalCompanyHolidays}</p>
+                            <p className="text-blue-600 text-sm font-semibold mt-1">Company Events</p>
                         </div>
-                        <div className="text-center bg-yellow-100/40 rounded-lg py-3 px-3">
-                            <p className="text-2xl font-bold text-yellow-700">{upcomingHolidays}</p>
-                            <p className="text-yellow-600 text-xs font-medium">Upcoming</p>
+                        <div className="text-center bg-white/70 rounded-xl py-4 px-3">
+                            <p className="text-3xl font-bold text-amber-700">{upcomingHolidays}</p>
+                            <p className="text-amber-600 text-sm font-semibold mt-1">Upcoming</p>
                         </div>
-                        <div className="text-center bg-amber-50/60 rounded-lg py-3 px-3">
-                            <p className="text-2xl font-bold text-amber-400">{pastHolidays}</p>
-                            <p className="text-amber-500 text-xs font-medium">Past</p>
+                        <div className="text-center bg-white/70 rounded-xl py-4 px-3">
+                            <p className="text-3xl font-bold text-slate-400">{pastHolidays}</p>
+                            <p className="text-slate-500 text-sm font-semibold mt-1">Past</p>
                         </div>
                     </div>
                 </div>
 
                 {/* Next Holiday Countdown */}
                 {nextHoliday && daysUntilNext !== null && year >= currentYear && (
-                    <div className="bg-amber-50/40 backdrop-blur-sm rounded-2xl p-6 mb-6">
-                        <div className="flex items-center justify-between flex-wrap gap-4">
+                    <div className="px-6 py-6 mb-8">
+                        <div className="flex items-center justify-between flex-wrap gap-4 bg-white/70 rounded-2xl p-6">
                             <div>
-                                <p className="text-amber-600 text-xs font-bold mb-1 uppercase tracking-wider">NEXT HOLIDAY</p>
+                                <p className="text-amber-700 text-xs font-bold mb-1 uppercase tracking-wider">NEXT HOLIDAY</p>
                                 <h2 className="text-2xl font-bold text-amber-900">{nextHoliday.name}</h2>
                                 {nextHoliday.localName && nextHoliday.localName !== nextHoliday.name && (
-                                    <p className="text-amber-700">{nextHoliday.localName}</p>
+                                    <p className="text-amber-800 font-medium">{nextHoliday.localName}</p>
                                 )}
-                                <p className="text-amber-600 mt-2 flex items-center gap-2">
+                                <p className="text-amber-700 mt-2 flex items-center gap-2 font-medium">
                                     <span>📅</span>
                                     <span>{formatDate(nextHoliday.date)} • {getDayOfWeek(nextHoliday.date)}</span>
                                 </p>
                             </div>
-                            <div className="text-center bg-white/50 rounded-xl p-5">
-                                <div className="text-5xl font-bold text-amber-500">
+                            <div className="text-center bg-white/80 rounded-xl p-5">
+                                <div className="text-5xl font-bold text-amber-600">
                                     {daysUntilNext === 0 ? '🎉' : daysUntilNext}
                                 </div>
-                                <p className="text-amber-600 text-sm font-bold mt-1">
+                                <p className="text-amber-700 text-sm font-bold mt-1">
                                     {daysUntilNext === 0 ? "Today!" : daysUntilNext === 1 ? "day left" : "days left"}
                                 </p>
                             </div>
@@ -244,13 +244,13 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
                 )}
 
                 {/* View Mode Toggle & Month Navigation */}
-                <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-5 mb-6">
+                <div className="bg-linear-to-br from-yellow-50 to-amber-50 backdrop-blur-sm rounded-2xl p-5 mb-6 border border-yellow-200/30">
                     <div className="flex items-center justify-between flex-wrap gap-4">
                         <div className="flex items-center gap-3">
                             <button
                                 onClick={goToPrevMonth}
                                 disabled={currentMonth === 0}
-                                className="px-3 py-2 bg-amber-100/50 text-amber-800 rounded-lg font-medium hover:bg-amber-200/50 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                                className="px-3 py-2 bg-yellow-100 text-amber-800 rounded-lg font-semibold hover:bg-yellow-200 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm"
                             >
                                 ←
                             </button>
@@ -260,34 +260,34 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
                             <button
                                 onClick={goToNextMonth}
                                 disabled={currentMonth === 11}
-                                className="px-3 py-2 bg-amber-100/50 text-amber-800 rounded-lg font-medium hover:bg-amber-200/50 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                                className="px-3 py-2 bg-yellow-100 text-amber-800 rounded-lg font-semibold hover:bg-yellow-200 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm"
                             >
                                 →
                             </button>
                             {year === currentYear && (
                                 <button
                                     onClick={goToToday}
-                                    className="px-3 py-2 bg-yellow-100/60 text-yellow-800 rounded-lg font-medium hover:bg-yellow-200/60 transition-all"
+                                    className="px-3 py-2 bg-amber-100 text-amber-800 rounded-lg font-semibold hover:bg-amber-200 transition-all shadow-sm"
                                 >
                                     Today
                                 </button>
                             )}
                         </div>
 
-                        <div className="flex bg-amber-100/50 rounded-xl p-1">
+                        <div className="flex bg-yellow-100/80 rounded-xl p-1 shadow-sm">
                             <button
                                 onClick={() => setViewMode('calendar')}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${viewMode === 'calendar'
-                                    ? 'bg-white/90 text-amber-900'
-                                    : 'text-amber-700 hover:text-amber-900'}`}
+                                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${viewMode === 'calendar'
+                                    ? 'bg-white text-amber-900 shadow-sm'
+                                    : 'text-amber-700 hover:text-amber-900 hover:bg-yellow-50'}`}
                             >
                                 📅 Calendar
                             </button>
                             <button
                                 onClick={() => setViewMode('list')}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${viewMode === 'list'
-                                    ? 'bg-white/90 text-amber-900'
-                                    : 'text-amber-700 hover:text-amber-900'}`}
+                                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${viewMode === 'list'
+                                    ? 'bg-white text-amber-900 shadow-sm'
+                                    : 'text-amber-700 hover:text-amber-900 hover:bg-yellow-50'}`}
                             >
                                 📝 List
                             </button>
@@ -297,19 +297,19 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
 
                 {/* Content */}
                 {viewMode === 'calendar' ? (
-                    <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-5">
-                        <div className="grid grid-cols-7 gap-2 mb-3">
+                    <div className="px-6">
+                        <div className="grid grid-cols-7 gap-3 mb-4">
                             {dayNames.map((day) => (
-                                <div key={day} className="text-center font-semibold text-amber-800 text-sm py-2">
+                                <div key={day} className="text-center font-bold text-amber-900 text-sm py-2">
                                     {day}
                                 </div>
                             ))}
                         </div>
 
-                        <div className="grid grid-cols-7 gap-2">
+                        <div className="grid grid-cols-7 gap-3">
                             {getCalendarDays(currentMonth).map((date, index) => {
                                 if (!date) {
-                                    return <div key={`empty-${index}`} className="h-28 bg-amber-50/20 rounded-lg"></div>;
+                                    return <div key={`empty-${index}`} className="h-32"></div>;
                                 }
 
                                 const dateString = getDateString(date);
@@ -321,14 +321,14 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
                                 return (
                                     <div
                                         key={index}
-                                        className={`h-28 rounded-lg p-2 transition-all hover:shadow-sm ${isTodayCell
-                                            ? 'bg-yellow-100/60 ring-1 ring-yellow-300/50'
+                                        className={`h-32 rounded-xl p-3 transition-all ${isTodayCell
+                                            ? 'bg-amber-100/80'
                                             : dayHolidays.length > 0 || dayTodos.length > 0
-                                                ? 'bg-white/50'
-                                                : 'bg-amber-50/20 hover:bg-amber-50/30'
-                                            } ${isPastDate && year === currentYear ? 'opacity-60' : ''}`}
+                                                ? 'bg-white/80'
+                                                : 'bg-white/50 hover:bg-white/70'
+                                            } ${isPastDate && year === currentYear ? 'opacity-40' : ''}`}
                                     >
-                                        <div className={`text-xs font-bold mb-1 ${isTodayCell ? 'text-amber-700' : 'text-amber-800'
+                                        <div className={`text-sm font-bold mb-1 ${isTodayCell ? 'text-amber-800' : 'text-amber-900'
                                             }`}>
                                             {date.getDate()}
                                             {isTodayCell && <span className="ml-1">📍</span>}
@@ -338,9 +338,9 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
                                             {dayHolidays.map((holiday, idx) => (
                                                 <div
                                                     key={`h-${idx}`}
-                                                    className={`px-1.5 py-0.5 rounded text-xs font-medium truncate ${holiday.type === 'public' ? 'bg-amber-100/70 text-amber-800' :
-                                                        holiday.type === 'company' ? 'bg-yellow-100/70 text-yellow-800' :
-                                                            'bg-orange-100/70 text-orange-800'
+                                                    className={`px-2 py-1 rounded text-xs font-semibold truncate ${holiday.type === 'public' ? 'bg-green-100/80 text-green-800' :
+                                                        holiday.type === 'company' ? 'bg-blue-100/80 text-blue-800' :
+                                                            'bg-purple-100/80 text-purple-800'
                                                         }`}
                                                     title={holiday.name}
                                                 >
@@ -350,7 +350,7 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
                                             {dayTodos.map((todo, idx) => (
                                                 <div
                                                     key={`t-${idx}`}
-                                                    className={`px-1.5 py-0.5 text-xs font-medium truncate ${todo.status === 'COMPLETED' ? 'text-amber-400 line-through' : getPriorityColor(todo.priority)
+                                                    className={`px-1.5 py-0.5 text-xs font-semibold truncate ${todo.status === 'COMPLETED' ? 'text-slate-400 line-through' : getPriorityColor(todo.priority)
                                                         }`}
                                                     title={`${todo.title} (${todo.priority})`}
                                                 >
@@ -363,23 +363,27 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
                             })}
                         </div>
 
-                        <div className="mt-6 pt-5 border-t border-slate-200 flex items-center justify-center gap-5 flex-wrap text-xs">
-                            <div className="flex items-center gap-1.5">
-                                <div className="w-4 h-4 bg-green-100 border border-green-200 rounded"></div>
-                                <span className="text-slate-600 font-medium">Public Holiday</span>
+                        <div className="mt-8 flex items-center justify-center gap-8 flex-wrap">
+                            <div className="flex items-center gap-2">
+                                <div className="w-4 h-4 bg-green-100 rounded-full"></div>
+                                <span className="text-amber-800 font-medium text-sm">Public Holiday</span>
                             </div>
-                            <div className="flex items-center gap-1.5">
-                                <div className="w-4 h-4 bg-blue-100 border border-blue-200 rounded"></div>
-                                <span className="text-slate-600 font-medium">Company Event</span>
+                            <div className="flex items-center gap-2">
+                                <div className="w-4 h-4 bg-blue-100 rounded-full"></div>
+                                <span className="text-amber-800 font-medium text-sm">Company Event</span>
                             </div>
-                            <div className="flex items-center gap-1.5">
-                                <div className="w-4 h-4 bg-blue-50 border border-blue-400 rounded ring-1 ring-blue-300"></div>
-                                <span className="text-slate-600 font-medium">Today</span>
+                            <div className="flex items-center gap-2">
+                                <div className="w-4 h-4 bg-purple-100 rounded-full"></div>
+                                <span className="text-amber-800 font-medium text-sm">Company Observance</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <div className="w-4 h-4 bg-amber-100 rounded-full"></div>
+                                <span className="text-amber-800 font-medium text-sm">Today</span>
                             </div>
                         </div>
                     </div>
                 ) : (
-                    <div className="space-y-4">
+                    <div className="px-6 space-y-6">
                         {monthNames.map((monthName, monthIndex) => {
                             const monthHolidays = holidaysByMonth[monthIndex];
                             if (!monthHolidays || monthHolidays.length === 0) return null;
@@ -387,45 +391,45 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
                             const isCurrentMonthInList = monthIndex === today.getMonth() && year === currentYear;
 
                             return (
-                                <div key={monthIndex} className={`bg-white/40 backdrop-blur-sm rounded-2xl overflow-hidden ${isCurrentMonthInList ? 'ring-1 ring-yellow-300/50' : ''}`}>
-                                    <div className={`py-3 px-5 ${isCurrentMonthInList ? 'bg-yellow-100/40' : 'bg-amber-50/30'}`}>
-                                        <h3 className="font-bold text-amber-900 flex items-center gap-2">
+                                <div key={monthIndex} className="bg-white/70 rounded-2xl overflow-hidden">
+                                    <div className="py-4 px-6 bg-amber-50/50">
+                                        <h3 className="font-bold text-amber-900 flex items-center gap-3 text-lg">
                                             <span>{monthName}</span>
-                                            {isCurrentMonthInList && <span className="text-xs bg-yellow-500/80 text-white px-2 py-0.5 rounded-full">Current</span>}
-                                            <span className="text-amber-600 font-normal text-sm">({monthHolidays.length})</span>
+                                            {isCurrentMonthInList && <span className="text-xs bg-amber-500 text-white px-2 py-1 rounded-full font-semibold">Current</span>}
+                                            <span className="text-amber-600 font-medium text-sm">({monthHolidays.length})</span>
                                         </h3>
                                     </div>
                                     <div>
                                         {monthHolidays.map((holiday, idx) => (
                                             <div
                                                 key={idx}
-                                                className={`flex items-center justify-between py-4 px-5 border-b border-amber-100/50 last:border-b-0 transition-colors
+                                                className={`flex items-center justify-between py-4 px-5 transition-colors
                                                     ${isPast(holiday.date) && year === currentYear ? 'opacity-50' : ''}
-                                                    ${isToday(new Date(holiday.date)) ? 'bg-yellow-50/40' : 'hover:bg-amber-50/30'}
+                                                    ${isToday(new Date(holiday.date)) ? 'bg-amber-50/60' : 'hover:bg-yellow-50/40'}
                                                 `}
                                             >
                                                 <div className="flex items-center gap-4">
-                                                    <div className="text-center min-w-16 bg-amber-50/50 rounded-lg py-2 px-3">
+                                                    <div className="text-center min-w-16 bg-yellow-100/60 rounded-lg py-2 px-3">
                                                         <p className="text-2xl font-bold text-amber-800">
                                                             {new Date(holiday.date).getDate()}
                                                         </p>
-                                                        <p className="text-xs text-amber-600 font-medium">
+                                                        <p className="text-xs text-amber-700 font-semibold">
                                                             {getDayOfWeek(holiday.date).slice(0, 3)}
                                                         </p>
                                                     </div>
                                                     <div>
-                                                        <p className={`font-semibold ${isPast(holiday.date) && year === currentYear ? 'text-amber-500' : 'text-amber-900'}`}>
+                                                        <p className={`font-bold ${isPast(holiday.date) && year === currentYear ? 'text-amber-500' : 'text-amber-900'}`}>
                                                             {holiday.name}
-                                                            {isToday(new Date(holiday.date)) && <span className="ml-2 text-yellow-700">🎉 Today!</span>}
+                                                            {isToday(new Date(holiday.date)) && <span className="ml-2 text-amber-700">🎉 Today!</span>}
                                                         </p>
                                                         {holiday.localName && holiday.localName !== holiday.name && (
-                                                            <p className="text-amber-600 text-sm">{holiday.localName}</p>
+                                                            <p className="text-amber-700 text-sm font-medium">{holiday.localName}</p>
                                                         )}
                                                     </div>
                                                 </div>
-                                                <span className={`px-3 py-1 rounded-lg text-xs font-medium ${holiday.type === 'public' ? 'bg-amber-100/70 text-amber-800' :
-                                                    holiday.type === 'company' ? 'bg-yellow-100/70 text-yellow-800' :
-                                                        'bg-orange-100/70 text-orange-800'
+                                                <span className={`px-3 py-1.5 rounded-lg text-xs font-bold ${holiday.type === 'public' ? 'bg-green-100/80 text-green-800' :
+                                                    holiday.type === 'company' ? 'bg-blue-100/80 text-blue-800' :
+                                                        'bg-purple-100/80 text-purple-800'
                                                     }`}>
                                                     {holiday.type === 'public' ? 'Public' : holiday.type === 'company' ? 'Company' : 'Observance'}
                                                 </span>
@@ -439,11 +443,11 @@ export default function CalendarUI({ holidays, year, todos }: CalendarUIProps) {
                 )}
 
                 {/* Footer */}
-                <div className="bg-white/40 backdrop-blur-sm rounded-xl p-4 mt-6 text-center">
-                    <div className="flex items-center justify-center gap-2 text-amber-700">
-                        <span className="text-xl">📌</span>
-                        <p className="text-xs font-medium">Holiday data from Calendarific API • Your tasks are private</p>
-                    </div>
+                <div className="px-6 py-6 mt-8 text-center">
+                    <p className="text-xs text-amber-700 flex items-center justify-center gap-2">
+                        <span>📌</span>
+                        <span>Holiday data from Calendarific API</span>
+                    </p>
                 </div>
             </div>
         </div>
