@@ -97,3 +97,45 @@ model TodoItem {
   @@index([u_id, status])
   @@index([due_date])
 }
+
+// 模拟股票交易系统
+model UserWallet {
+  wallet_id  Int      @id @default(autoincrement())
+  u_id       Int      @unique
+  balance    Float    @default(100000.00) // 初始虚拟货币 RM100,000
+  currency   String   @default("MYR")
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([u_id])
+}
+
+model StockHolding {
+  holding_id Int      @id @default(autoincrement())
+  u_id       Int
+  symbol     String // 股票代码 (例如: AAPL, TSLA)
+  quantity   Int // 持有数量
+  avg_price  Float // 平均买入价格
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@unique([u_id, symbol])
+  @@index([u_id])
+  @@index([symbol])
+}
+
+model StockTransaction {
+  transaction_id   Int      @id @default(autoincrement())
+  u_id             Int
+  symbol           String
+  transaction_type String // BUY 或 SELL
+  quantity         Int
+  price            Float // 交易时的股价
+  total_amount     Float // 总金额 (quantity * price)
+  transaction_date DateTime @default(now())
+  created_at       DateTime @default(now())
+
+  @@index([u_id])
+  @@index([symbol])
+  @@index([transaction_date])
+}

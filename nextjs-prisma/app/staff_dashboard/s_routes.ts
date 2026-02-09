@@ -60,6 +60,12 @@ export const sidebarRoutes: RouteConfig[] = [
         description: "View the latest stocks and updates"
     },
     {
+        path: "/staff_dashboard/stocks/portfolio",
+        label: "My Portfolio",
+        icon: "💼",
+        description: "View your investment portfolio and holdings"
+    },
+    {
         path: "/staff_dashboard/holidays",
         label: "Calendar",
         icon: "🗓️",

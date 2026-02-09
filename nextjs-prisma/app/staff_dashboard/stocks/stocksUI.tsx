@@ -93,14 +93,22 @@ export default function StocksUI({ stocks }: { stocks: Stock[] }) {
         <div className="py-4 px-4">
             <div className="max-w-7xl mx-auto">
                 {/* Page Header */}
-                <div className="mb-6">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-2 flex items-center gap-3">
-                        <span>📊</span>
-                        <span>Stock Monitor</span>
-                    </h1>
-                    <p className="text-gray-600">
-                        Real-time stock prices • Updated every minute
-                    </p>
+                <div className="mb-6 flex justify-between items-start">
+                    <div>
+                        <h1 className="text-4xl font-bold text-gray-900 mb-2 flex items-center gap-3">
+                            <span>📊</span>
+                            <span>Stock Monitor</span>
+                        </h1>
+                        <p className="text-gray-600">
+                            Real-time stock prices • Updated every minute
+                        </p>
+                    </div>
+                    <Link href="/staff_dashboard/stocks/portfolio">
+                        <button className="px-6 py-3 bg-linear-to-br from-green-50 to-emerald-50 text-green-800 font-bold rounded-xl hover:from-green-100 hover:to-emerald-100 transition-all duration-200 shadow-lg hover:shadow-xl border-2 border-green-200 flex items-center gap-2">
+                            <span>💼</span>
+                            <span>My Portfolio</span>
+                        </button>
+                    </Link>
                 </div>
 
                 {/* Filters Bar */}
